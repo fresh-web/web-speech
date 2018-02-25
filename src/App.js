@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Main from './Main';
+import ListenerButton from './ListenerButton';
 import {
   SpeechRecognition,
   SpeechGrammarList,
@@ -44,7 +45,8 @@ class App extends Component {
   render() {
     return (
       <div className="demo-1">
-        <Main onStart={this.start} onStop={this.stop} />
+        <ListenerButton />
+        {/* <Main onStart={this.start} onStop={this.stop} /> */}
       </div>
     );
   }
