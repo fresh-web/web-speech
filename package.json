@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "animejs": "^2.2.0",
+    "charming": "^2.2.1",
+    "modernizr": "^3.5.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.1.1"
+    "react-scripts": "1.1.1",
+    "snapsvg-cjs": "^0.0.6"
   },
   "scripts": {
     "start": "react-scripts start",

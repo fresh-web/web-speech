@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
-import Main from './Main';
+import Word from './Word';
 import ListenerButton from './ListenerButton';
+
 import {
   SpeechRecognition,
   SpeechGrammarList,
   SpeechRecognitionEvent,
-} from './speech';
-import './App.css';
+} from '../lib/Speech';
 
 class App extends Component {
+  state = {
+    show: false,
+  };
+
   async componentDidMount() {
     this.recognition = new SpeechRecognition();
     this.recognition.lang = 'ko-KR';
@@ -30,6 +34,10 @@ class App extends Component {
     this.recognition.onnomatch = event => {
       console.log('no match');
     };
+
+    setTimeout(() => {
+      this.setState({ show: true });
+    }, 10000);
   }
 
   start = () => {
@@ -43,11 +51,10 @@ class App extends Component {
   };
 
   render() {
-    return (
-      <div className="demo-1">
-        <ListenerButton />
-        {/* <Main onStart={this.start} onStop={this.stop} /> */}
-      </div>
+    return this.state.show ? (
+      <Word onStart={this.start} onStop={this.stop} />
+    ) : (
+      <ListenerButton />
     );
   }
 }

@@ -1,5 +1,9 @@
 /* eslint-disable */
 
+import anime from 'animejs';
+
+import Word, { randomBetween } from '../lib/wordFx';
+
 const effects = [
   // Effect 1
   {
