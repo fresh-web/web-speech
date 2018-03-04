@@ -1,16 +1,20 @@
 {
-  "name": "web-speech",
+  "name": "web-speech-example",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "homepage": "https://fresh-web.github.io/web-speech",
   "dependencies": {
     "animejs": "^2.2.0",
     "charming": "^2.2.1",
+    "gh-pages": "^1.1.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1",
     "snapsvg-cjs": "^0.0.6"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

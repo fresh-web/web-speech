@@ -19,7 +19,7 @@ class App extends Component {
 
   componentDidMount() {
     this.recognition = new SpeechRecognition();
-    this.recognition.lang = 'ko-KR';
+    this.recognition.lang = process.env.REACT_APP_LANGUAGE || 'en-US';
     this.recognition.continuous = false;
     this.recognition.interimResults = false;
     this.recognition.maxAlternatives = 1;
