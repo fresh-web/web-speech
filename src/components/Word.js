@@ -2,8 +2,6 @@ import React from 'react';
 
 import Slideshow from '../lib/Slideshow';
 
-import '../css/Word.css';
-
 class Word extends React.Component {
   state = {
     number: 1,
@@ -25,22 +23,18 @@ class Word extends React.Component {
     const { text } = this.props;
 
     return (
-      <main className="demo-1">
-        <div className="content">
-          <div className="slideshow">
-            <div className="slide slide--current">
-              <div className={`slide__bg slide__bg--${number}`} />
-              <h2 className={`word word--${number}`}>{text}</h2>
-            </div>
-          </div>
+      <div className="slideshow">
+        <div className="slide slide--current">
+          <div className={`slide__bg slide__bg--${number}`} />
+          <h2 className={`word word--${number}`}>{text}</h2>
         </div>
-      </main>
+      </div>
     );
   }
 }
 
 Word.defaultProps = {
-  text: 'wonderland',
+  text: '',
 };
 
 export default Word;

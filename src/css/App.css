@@ -12,7 +12,7 @@ body {
 	overflow: hidden;
 	/* color: #57585c;
 	color: var(--color-text); */
-	background-color: #fff;
+	background:  linear-gradient(to right, #00d2ff, #3a7bd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	background-color: var(--color-bg);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -21,19 +21,26 @@ body {
 /* Color schemes */
 .demo-1 {
 	--color-text: #fff;
-	--color-bg: #101010;
+	--color-bg: linear-gradient(to right, #36d1dc, #5b86e5);
 	--color-link: #fff;
 	--color-link-hover: #fff473;
 	--color-nav: #fff;
-	--color-bg-slide-1: #4cabef;
-	--color-bg-slide-2: #0406e6;
-	--color-bg-slide-3: #272526;
-	--color-bg-slide-4: #b9b9b9;
-	--color-bg-slide-5: #5900ce;
-	--color-bg-slide-6: #1b1a1a;
-	--color-bg-slide-7: #bf2525;
-	--color-bg-slide-8: #d6d1d1;
-	--color-bg-slide-9: #000000;
+	--color-bg-slide-1: linear-gradient(to right, #556270, #ff6b6b);
+	--color-bg-slide-2: linear-gradient(to right, #232526, #414345);
+	--color-bg-slide-3: linear-gradient(to right, #fc5c7d, #6a82fb);
+	--color-bg-slide-4: linear-gradient(to right, #00b09b, #96c93d);
+	--color-bg-slide-5: linear-gradient(to right, #2980b9, #2c3e50);
+	--color-bg-slide-6: linear-gradient(to right, #00f260, #0575e6);
+	--color-bg-slide-7: linear-gradient(to right, #d31027, #ea384d);
+	--color-bg-slide-8: linear-gradient(to right, #77a1d3, #79cbca, #e684ae);
+	--color-bg-slide-9: linear-gradient(to right, #03001e, #7303c0, #ec38bc, #fdeff9);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+	color: #fff;
 }
 
 a {
@@ -207,7 +214,7 @@ a:focus {
 
 .word--6 .char5,
 .word--6 .char9 {
-	color: #dc2e2e;
+	color: #fff;
 }
 
 .word--7 {
@@ -220,7 +227,7 @@ a:focus {
 	font-weight: 700;
 	text-transform: lowercase;
 	letter-spacing: -0.05em;
-	color: #0800ff;
+	color: #fff;
 }
 
 .word--9 {
@@ -240,4 +247,37 @@ a:focus {
 	.slide .word {
 		font-size: 2em;
 	}
+}
+
+.button {
+  position: relative;
+  appearance: none;
+  background: #f72359;
+  padding: 1em 2em;
+  border: none;
+  color: white;
+  font-size: 1.2em;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  border-radius: 100px;
+}
+.button span {
+  position: relative;
+  pointer-events: none;
+}
+.button::before {
+  --size: 0;
+  content: '';
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  background: radial-gradient(circle closest-side, #4405f7, rgba(0, 0, 0, 0));
+  transform: translate(-50%, -50%);
+  transition: width .2s ease, height .2s ease;
+}
+.button:hover::before {
+  --size: 400px;
 }

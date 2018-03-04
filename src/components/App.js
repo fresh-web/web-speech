@@ -8,9 +8,12 @@ import {
   SpeechRecognitionEvent,
 } from '../lib/Speech';
 
+import '../css/App.css';
+
 class App extends Component {
   state = {
     show: false,
+    text: "Sorry, can't hear",
   };
 
   async componentDidMount() {
@@ -20,41 +23,63 @@ class App extends Component {
     this.recognition.interimResults = false;
     this.recognition.maxAlternatives = 1;
 
-    console.log('this.recognition', this.recognition);
-
     this.recognition.onresult = event => {
-      console.log('event.results', event.results);
+      const text = event.results[0][0].transcript;
+
+      console.log('transcript', text);
+      this.setState({ text });
     };
 
     this.recognition.onspeechend = () => {
       console.log('stopped');
-      this.recognition.stop();
+
+      this.setState({ show: true });
     };
 
     this.recognition.onnomatch = event => {
       console.log('no match');
+      this.setState({ text: "Sorry, can't hear" });
     };
 
-    setTimeout(() => {
-      this.setState({ show: true });
-    }, 10000);
+    this.recognition.onend = () => {
+      console.log('end');
+
+      this.end();
+
+      // setTimeout(() => {
+      //   this.setState({
+      //     show: false,
+      //   });
+      // }, 10000);
+    };
+
+    this.recognition.onerror = event => {
+      console.log('error', event);
+
+      this.setState({
+        show: true,
+        text: event.error,
+      });
+    };
   }
 
   start = () => {
-    console.log('start');
     this.recognition.start();
   };
 
-  stop = () => {
-    console.log('stop');
+  end = () => {
     this.recognition.stop();
   };
 
   render() {
-    return this.state.show ? (
-      <Word onStart={this.start} onStop={this.stop} />
-    ) : (
-      <ListenerButton />
+    return (
+      <main className="demo-1">
+        {this.state.show ? (
+          <Word text={this.state.text} />
+        ) : (
+          <ListenerButton onStart={this.start} onEnd={this.end} />
+        )}
+      </main>
     );
   }
 }
