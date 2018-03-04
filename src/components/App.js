@@ -17,7 +17,7 @@ class App extends Component {
     text: "Sorry, can't hear",
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     this.recognition = new SpeechRecognition();
     this.recognition.lang = 'ko-KR';
     this.recognition.continuous = false;

@@ -1,0 +1,196 @@
+
+/* Slideshow */
+.slideshow {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.slide {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	pointer-events: none;
+	opacity: 0;
+	z-index: 1;
+}
+
+.slide--current {
+	opacity: 1;
+	pointer-events: auto;
+	z-index: 100;
+}
+
+.slide__bg {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+.slide__bg--1 {
+	background: var(--color-bg-slide-1);
+}
+
+.slide__bg--2 {
+	background: var(--color-bg-slide-2);
+}
+
+.slide__bg--3 {
+	background: var(--color-bg-slide-3);
+}
+
+.slide__bg--4 {
+	background: var(--color-bg-slide-4);
+}
+
+.slide__bg--5 {
+	background: var(--color-bg-slide-5);
+}
+
+.slide__bg--6 {
+	background: var(--color-bg-slide-6);
+}
+
+.slide__bg--7 {
+	background: var(--color-bg-slide-7);
+}
+
+.slide__bg--8 {
+	background: var(--color-bg-slide-8);
+}
+
+.slidenav {
+	position: relative;
+	margin: 16em 0 0 0;
+	z-index: 200;
+}
+
+.slidenav__item {
+	background: none;
+	border: none;
+	font-size: 1.5em;
+	color: var(--color-nav);
+	margin: 1em;
+}
+
+.slidenav__item:focus {
+	outline: none;
+}
+
+.slidenav__item:hover {
+	opacity: 0.6;
+}
+
+.slidenav__item--next .icon {
+	transform: rotate(180deg);
+}
+
+/* Word + SVG styles */
+.word {
+	position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 0 0.25em 0;
+    cursor: default;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    grid-area: title;
+    font-size: 10vw;
+    font-weight: 400;
+}
+
+.word span {
+	display: block;
+	position: relative;
+	flex: none;
+	white-space: pre;
+}
+
+.word--1 {
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 9vw;
+}
+
+.word--2 {
+	font-family: 'Arbutus Slab', serif;
+}
+
+.word--3 {
+	font-family: 'Questrial', sans-serif;
+}
+
+.word--4 {
+	font-family: 'Poppins', sans-serif;
+	font-weight: 800;
+}
+
+.word--5 {
+	font-family: 'Bungee Outline', cursive;
+}
+
+.word--6 {
+	font-family: 'Hammersmith One', sans-serif;
+}
+
+.word--6 .char5,
+.word--6 .char9 {
+	color: #fff;
+}
+
+.word--7 {
+	font-family: 'Volkhov', serif;
+	font-weight: 700;
+}
+
+.word--8 {
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: 700;
+	text-transform: lowercase;
+	letter-spacing: -0.05em;
+	color: #fff;
+}
+
+.word--9 {
+	font-family: 'Montserrat Alternates', serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 8vw;
+}
+
+.shapes {
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+@media screen and (max-width: 40em) {
+	.slide .word {
+		font-size: 2em;
+	}
+}
+
+.close {
+	position: absolute !important;
+	top: 20px;
+	left: 20px;
+	z-index: 9999;
+	color: #fff;
+	/* border-radius: 50%; */
+	padding: 15px !important;
+}

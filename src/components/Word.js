@@ -2,6 +2,8 @@ import React from 'react';
 
 import Slideshow from '../lib/Slideshow';
 
+import '../css/Word.css';
+
 class Word extends React.Component {
   state = {
     number: 1,
