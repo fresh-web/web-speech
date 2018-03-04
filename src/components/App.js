@@ -13,6 +13,7 @@ import '../css/App.css';
 class App extends Component {
   state = {
     show: false,
+    listening: false,
     text: "Sorry, can't hear",
   };
 
@@ -41,16 +42,20 @@ class App extends Component {
       this.setState({ text: "Sorry, can't hear" });
     };
 
+    this.recognition.onstart = () => {
+      this.setState({
+        listening: true,
+      });
+    };
+
     this.recognition.onend = () => {
       console.log('end');
 
-      this.end();
+      this.setState({
+        listening: false,
+      });
 
-      // setTimeout(() => {
-      //   this.setState({
-      //     show: false,
-      //   });
-      // }, 10000);
+      this.end();
     };
 
     this.recognition.onerror = event => {
@@ -71,13 +76,24 @@ class App extends Component {
     this.recognition.stop();
   };
 
+  handleClose = () => {
+    this.setState({ show: false });
+  };
+
   render() {
     return (
       <main className="demo-1">
         {this.state.show ? (
-          <Word text={this.state.text} />
+          <Word text={this.state.text} onClose={this.handleClose} />
         ) : (
-          <ListenerButton onStart={this.start} onEnd={this.end} />
+          <ListenerButton
+            onStart={this.start}
+            onEnd={this.end}
+            disabled={this.state.listening}
+            buttonText={
+              this.state.listening ? 'Listening...' : 'Click me to listen'
+            }
+          />
         )}
       </main>
     );

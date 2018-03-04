@@ -5,13 +5,12 @@ class ListenerButton extends React.Component {
     show: false,
   };
 
-  handleMove = (e) => {
+  handleMove = e => {
     const x = e.pageX - e.target.offsetLeft;
     const y = e.pageY - e.target.offsetTop;
 
-    e.target.style.setProperty('--x', `${x}px`)
-    e.target.style.setProperty('--y', `${y}px`)
-
+    e.target.style.setProperty('--x', `${x}px`);
+    e.target.style.setProperty('--y', `${y}px`);
   };
 
   handleStart = event => {
@@ -22,13 +21,19 @@ class ListenerButton extends React.Component {
 
   render() {
     return (
-      <button className="button" onClick={this.handleStart} onMouseMove={this.handleMove}>
-        <span>
-          Click me to listen
-        </span>
+      <button
+        {...this.props}
+        className="button"
+        onClick={this.handleStart}
+        onMouseMove={this.handleMove}>
+        <span>{this.props.buttonText}</span>
       </button>
     );
   }
 }
+
+ListenerButton.defaultProps = {
+  buttonText: 'Click me to listen',
+};
 
 export default ListenerButton;
