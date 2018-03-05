@@ -2,12 +2,6 @@ import React, { Component } from 'react';
 import Word from './Word';
 import ListenerButton from './ListenerButton';
 
-import {
-  SpeechRecognition,
-  SpeechGrammarList,
-  SpeechRecognitionEvent,
-} from '../lib/Speech';
-
 import '../css/App.css';
 
 class App extends Component {
@@ -18,7 +12,17 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.recognition = new SpeechRecognition();
+    const Recognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!Recognition) {
+      alert(
+        'Speech Recognition API is not supported in this browser, try chrome'
+      );
+      return;
+    }
+
+    this.recognition = new Recognition();
     this.recognition.lang = process.env.REACT_APP_LANGUAGE || 'en-US';
     this.recognition.continuous = false;
     this.recognition.interimResults = false;
