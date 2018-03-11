@@ -1,8 +1,8 @@
 # Web Speech API Example
 
-### This example app is simply to show Web Speech API.
+## This example app is simply to show how to handle Web Speech API.
 
-You can check out the [demo](https://fresh-web.github.io/web-speech/), or you can install it on your own.
+You can check out the [demo](https://fresh-web.github.io/web-speech/), or install it on your own.
 
 In order to run this app:
 
@@ -27,3 +27,8 @@ or
 ```js
 yarn start
 ```
+
+## All design resources(Text, Background colors) are from:
+
+* Text: https://tympanus.net/Development/DecorativeLetterAnimations/
+* Background Colors: https://uigradients.com/
